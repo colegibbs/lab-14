@@ -70,9 +70,11 @@ function updateCartPreview() {
   let cartContents = document.getElementById('cartContents');
     let ulElm = document.createElement("ul");
     cartContents.appendChild(ulElm);
+    let checkArr = [];
     for (let i = 0; i < parsedcart.items.length; i++){
       let count = 0;
       let itemI = parsedcart.items[i];
+      if(!checkArr.includes(itemI)){
       for (let j = 0; j <parsedcart.items.length; j++) {
         if (itemI === parsedcart.items[i]) {
           count++
@@ -81,6 +83,8 @@ function updateCartPreview() {
       let liElm = document.createElement('liElm');
       liElm.textContent = `${itemI}, ${count}`;
       ulElm.appendChild(liElm);
+      }
+      checkArr.push(itemI);
     }  
 }
 
